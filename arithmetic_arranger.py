@@ -1,6 +1,6 @@
 def arithmetic_arranger(problems, answer=False):
     if len(problems) > 5:
-        return "ERROR: Too many problems."
+        return "Error: Too many problems."
 
     arranged_problems = ""
 
@@ -43,19 +43,24 @@ def arithmetic_arranger(problems, answer=False):
         line3 = line3 + dash + "    "
 
         if answer:
-            if parts[1] == '+':
-                result = str(int(parts[0]) + int(parts[2]))
-                for k in range(size - len(result)):
-                    space4 = space4 + " "
-            else:
-                result = str(int(parts[0]) - int(parts[2]))
-                for k in range(size - len(result)):
-                    space4 = space4 + " "
+          if parts[1] == '+':
+              result = str(int(parts[0]) + int(parts[2]))
+              for k in range(size - len(result)):
+                  space4 = space4 + " "
+          else:
+              result = str(int(parts[0]) - int(parts[2]))
+              for k in range(size - len(result)):
+                  space4 = space4 + " "
         
-        line4 = line4 + space4 + result + "    "
+          line4 = line4 + space4 + result + "    "
+    
+    line1 = line1[:-4]
+    line2 = line2[:-4]
+    line3 = line3[:-4]
+    line4 = line4[:-4]
 
-            
-
-    arranged_problems = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4
+    arranged_problems = line1 + "\n" + line2 + "\n" + line3
+    if answer:
+      arranged_problems = arranged_problems + "\n" + line4
 
     return arranged_problems
